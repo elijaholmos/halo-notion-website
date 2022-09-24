@@ -18,11 +18,11 @@ const tokenExchange = async (req, res) => {
 					`${process.env[`${req.env}_client_id`]}:${process.env[`${req.env}_client_secret`]}`
 				).toString('base64')}`,
 			},
-			body: new URLSearchParams({
+			body: {
 				grant_type: 'authorization_code',
 				code,
 				redirect_uri,
-			}).toString(),
+			},
 		});
 
 		res.status(result.status).json(await result.json().catch(() => null));
