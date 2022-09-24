@@ -15,7 +15,7 @@ const tokenExchange = async (req, res) => {
 			headers: {
 				'Content-Type': 'application/json',
 				Authorization: `Basic ${Buffer.from(
-					`${process.env[`${req.env}_client_id`]}:${process.env[`${req.env}_client_secret`]}`
+					`${process.env[`client_id`]}:${process.env[`client_secret`]}`
 				).toString('base64')}`,
 			},
 			body: {
