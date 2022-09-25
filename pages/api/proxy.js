@@ -9,9 +9,9 @@ const tokenExchange = async (req, res) => {
 		const { url } = req.query;
 		if (!url) return res.status(400).end();
 		logger.info('incoming request body');
-		logger.info(req.body);
+		logger.info(JSON.parse(req.body));
 		const result = await fetch(decodeURIComponent(url), {
-			...req.body,
+			...JSON.parse(req.body),
 		});
 
 		res.status(result.status).json(await result.json().catch(() => null));
